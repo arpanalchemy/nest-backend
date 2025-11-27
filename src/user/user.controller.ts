@@ -13,6 +13,11 @@ export class UserController extends BaseController<User>(
   UpdateUserDto,
   'users', // Route prefix (optional, defaults to entityName + 's')
 ) {
+  // Configure default relations to be included in findAll and findOne
+  // Example: if User had relations like 'profile' or 'orders', you would set:
+  // protected defaultRelations = ['profile', 'orders'];
+  protected defaultRelations?: string[];
+
   constructor(private readonly userService: UserService) {
     super(userService);
   }
